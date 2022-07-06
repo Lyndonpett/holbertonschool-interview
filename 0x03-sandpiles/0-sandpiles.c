@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- * sandpilesSumFun - sums two sandpiles and topples until sum is stable
+ * sandpiles_sum - sums two sandpiles and topples until sum is stable
  *
  * @grid1: first 3x3 grid
  * @grid2: second 3x3 grid
