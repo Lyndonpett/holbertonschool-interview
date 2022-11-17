@@ -15,15 +15,14 @@ Your runtime will be evaluated in this task
 
 def makeChange(coins, total):
     """ Given a pile of coins of different values, determine the fewest """
-    if total <= 0:
-        return 0
     coins.sort(reverse=True)
     count = 0
     for coin in coins:
-        if total % coin == 0:
+        if total >= coin:
             count += total // coin
-            return count
-        if total > coin:
-            count += total // coin
-            total = total % coin
+            total %= coin
+    if total == 0:
+        return count
+    if total <= 0:
+        return 0
     return -1
