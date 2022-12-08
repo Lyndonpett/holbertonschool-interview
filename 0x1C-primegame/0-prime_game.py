@@ -36,7 +36,7 @@ def isWinner(x, nums):
         return None
 
     for j in range(x):
-        nums = [i for i in nums if i % 2 == 1]
+        nums = [num for num in nums if num % 2 == 1]
         if (len(nums) == 0):
             return None
         if (len(nums) % 2 == 0):
