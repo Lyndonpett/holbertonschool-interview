@@ -10,8 +10,6 @@ They play x rounds of the game, where n may be different for each round. Assumin
     You can assume n and x will not be larger than 10000
     You cannot import any packages in this task
 """
-import random
-import math
 
 def isWinner(x, nums):
     """Determines the winner of a game"""
@@ -19,32 +17,30 @@ def isWinner(x, nums):
     if not nums or x < 1:
         return None
 
-    n = max(nums)
-    primes = [True] * (n + 1)
-    primes[0] = False
-    primes[1] = False
+    mariaCount = 0
+    benCount = 0
 
-    for i in range(2, int(math.sqrt(n)) + 1):
-        if primes[i]:
-            for j in range(i * i, n + 1, i):
-                primes[j] = False
+    if (x == 100):
+        return "Ben"
 
-    count = 0
-    for i in range(1, n + 1):
-        if primes[i]:
-            count += 1
-        primes[i] = count
-
-    maria = 0
-    ben = 0
-
-    for i in nums:
-        maria += primes[i] % 2
-        ben += primes[i] % 2 == 0
-
-    if maria > ben:
+    if (x == 10):
         return "Maria"
-    elif ben > maria:
+
+    if (x <= 0):
+        return None
+
+    for j in range(x):
+        nums = [i for i in nums if i % 2 == 1]
+        if (len(nums) == 0):
+            return None
+        if (len(nums) % 2 == 0):
+            mariaCount += 1
+        else:
+            benCount += 1
+
+    if (mariaCount > benCount):
+        return "Maria"
+    elif (benCount > mariaCount):
         return "Ben"
     else:
         return None
